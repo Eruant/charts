@@ -1,0 +1,9 @@
+<template name="layout">
+    <header>
+        <h1>
+            <a href="{{ pathFor 'chartList' }}">Charts</a>
+        </h1>
+        {{> loginButtons}}
+    </header>
+    {{> yield}}
+</template>

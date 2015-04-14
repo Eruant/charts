@@ -8,3 +8,6 @@ meteor-platform
 mrt:raphaeljs-package
 fourseven:scss
 iron:router
+accounts-ui
+accounts-password
+underscore

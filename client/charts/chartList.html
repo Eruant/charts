@@ -1,0 +1,19 @@
+<template name="chartList">
+    <section class="chartList">
+        <ul>
+            {{#each charts}}
+                {{> chartListItem}}
+            {{/each}}
+        </ul>
+
+        <a href="{{pathFor 'createNewChart' }}">Create a new chart</a>
+    </section>
+</template>
+
+<template name="chartListItem">
+    <li>
+        <a href="{{ pathFor 'chartItem' _id }}">
+            {{ title }}
+        </a>
+    </li>
+</template>
