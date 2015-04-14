@@ -1,5 +1,16 @@
 <template name="chartItem">
 <p>Title: '{{ title }}'</p>
 
+<ul>
+{{#each results}}
+    <li>{{name}}:{{value}}</li>
+{{/each}}
+</ul>
+
+<form>
+    <input name="answer" placeholder="Your answer">
+    <input type="submit" value="Submit">
+</form>
+
 <a href="{{ pathFor 'chartList' }}">Back</a>
 </template>
