@@ -1,6 +1,6 @@
-Template.chartItem.rendered = function () {
+drawChart = function (results) {
 
-    if (!this.data.results.length) {
+    if (!results.length) {
         return false;
     }
 
@@ -12,16 +12,18 @@ Template.chartItem.rendered = function () {
             b:20, // bottom
             l:20  // right
         },
-        barWidth = paperWidth / this.data.results.length,
+        barWidth = paperWidth / results.length,
         heighestValue = 0;
 
-    _.each(this.data.results, function (element) {
+    _.each(results, function (element) {
         if (element.value > heighestValue) {
             heighestValue = element.value;
         }
     });
 
     var unitHeight = paperHeight / heighestValue;
+
+    $('#paper').empty();
 
     var paper = Raphael('paper',
         paperWidth + padding.l + padding.r,
@@ -34,7 +36,7 @@ Template.chartItem.rendered = function () {
         .rect(0, 0, paper.width, paper.height)
         .attr('fill', '#fff');
 
-    _.each(this.data.results, function (element, index, list) {
+    _.each(results, function (element, index, list) {
 
         var barHeight = unitHeight * element.value,
             offsetTop = paperHeight - barHeight,
@@ -60,6 +62,16 @@ Template.chartItem.rendered = function () {
 
 };
 
+Template.chartItem.rendered = function () {
+    drawChart(this.data.results);
+
+    Charts.find(this.data._id).observe({
+        changed: function (chart) {
+            drawChart(chart.results);
+        }
+    });
+};
+
 Template.chartItem.events({
 
     'submit form': function (e) {
@@ -77,6 +89,7 @@ Template.chartItem.events({
             if (error) {
                 alert(error.reason);
             }
+
         });
 
         $answer.val('');
