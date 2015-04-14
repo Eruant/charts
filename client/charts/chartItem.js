@@ -1,16 +1,62 @@
 Template.chartItem.rendered = function () {
 
-    var paper = Raphael('paper', 100, 100);
-    var rect = paper.rect(0, 0, 100, 100);
-    rect.attr('fill', '#f00');
-    var circle = paper.circle(50, 50, 30);
-    circle.attr('fill', '#0f0');
+    if (!this.data.results.length) {
+        return false;
+    }
+
+    var paperWidth = 800,
+        paperHeight = 400,
+        padding = {
+            t:30, // top
+            r:20, // right
+            b:20, // bottom
+            l:20  // right
+        },
+        barWidth = paperWidth / this.data.results.length,
+        heighestValue = 0;
+
+    _.each(this.data.results, function (element) {
+        if (element.value > heighestValue) {
+            heighestValue = element.value;
+        }
+    });
+
+    var unitHeight = paperHeight / heighestValue;
+
+    var paper = Raphael('paper',
+        paperWidth + padding.l + padding.r,
+        paperHeight + padding.t + padding.b
+    );
+
+    paper
+        .rect(0, 0, paper.width, paper.height)
+        .attr('fill', '#fff');
+
+    _.each(this.data.results, function (element, index, list) {
+
+        var barHeight = unitHeight * element.value,
+            offsetTop = paperHeight - barHeight,
+            barPadding = 10,
+            x = index * barWidth + padding.l + barPadding,
+            y = offsetTop + padding.t,
+            text = element.name.charAt(0).toUpperCase() + element.name.slice(1);
+
+        paper
+            .rect(x, y, barWidth - (barPadding * 2), barHeight)
+            .attr('fill', '#336');
+
+        paper
+            .text(x + barPadding + 2, paperHeight + padding.t - barPadding, text)
+            .transform('r90')
+            .attr({
+                'text-anchor': 'end',
+                'font-size': 14,
+                'font-family': 'Arial',
+                'fill': '#fff'
+            });
+    });
 
 };
-
-Template.chartItem.helpers({
-
-});
 
 Template.chartItem.events({
 
