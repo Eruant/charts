@@ -5,9 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-mrt:raphaeljs-package
 fourseven:scss
 iron:router
 accounts-ui
 accounts-password
 underscore
+clubfest:raphael
