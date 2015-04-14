@@ -3,3 +3,7 @@ $color-background: #eee;
 body {
     background-color: $color-background;
 }
+
+#paper svg {
+    max-width: 100%;
+}

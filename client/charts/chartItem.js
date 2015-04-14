@@ -28,6 +28,8 @@ Template.chartItem.rendered = function () {
         paperHeight + padding.t + padding.b
     );
 
+    paper.setViewBox(0, 0, paper.width, paper.height, true);
+
     paper
         .rect(0, 0, paper.width, paper.height)
         .attr('fill', '#fff');
