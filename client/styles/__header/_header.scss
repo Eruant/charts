@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 0 20px hsla(0, 0%, 0%, 0.3);
+
+    background: $color-background-light;
+
+    h1 {
+        flex: 1 100%;
+        margin: auto;
+    }
+
+    #login-buttons {
+        flex: 1 100%;
+        margin: auto;
+    }
+
+}

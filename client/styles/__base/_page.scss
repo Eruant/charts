@@ -1,0 +1,17 @@
+html,
+body {
+    background-color: $color-background;
+    font-family: Arial;
+}
+
+.main {
+    padding: 40px 20px 60px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: hsl(180, 20%, 40%);
+}

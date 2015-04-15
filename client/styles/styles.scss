@@ -1,0 +1,10 @@
+@import "__base/normalize";
+@import "__base/colours";
+@import "__base/page";
+
+@import "__header/header";
+@import "__footer/footer";
+
+#paper svg {
+    max-width: 100%;
+}
