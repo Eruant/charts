@@ -94,6 +94,14 @@ Template.chartItem.rendered = function () {
     });
 };
 
+Template.chartItem.helpers({
+
+    title: function () {
+        return 'Chart: ' + this.title;
+    }
+
+});
+
 Template.chartItem.events({
 
     'submit form': function (e) {
