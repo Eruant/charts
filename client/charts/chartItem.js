@@ -98,6 +98,17 @@ Template.chartItem.helpers({
 
     title: function () {
         return 'Chart: ' + this.title;
+    },
+
+    chartData: function () {
+
+        var results = [];
+
+        _.each(this.results, function (element) {
+            results.push("\t{\n\t\t" + 'name: "' + element.name + "\",\n\t\tvalue: " + element.value + "\n\t}");
+        });
+
+        return "[\n" + results.join(",\n") + "\n]";
     }
 
 });
