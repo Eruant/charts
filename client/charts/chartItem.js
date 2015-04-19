@@ -10,7 +10,7 @@ drawChart = function (results) {
             t:30, // top
             r:20, // right
             b:20, // bottom
-            l:20  // right
+            l:40  // left
         },
         barWidth = paperWidth / results.length,
         heighestValue = 0;
@@ -23,6 +23,8 @@ drawChart = function (results) {
 
     var unitHeight = paperHeight / heighestValue;
 
+    console.log(heighestValue);
+
     $('#paper').empty();
 
     var paper = Raphael('paper',
@@ -30,12 +32,32 @@ drawChart = function (results) {
         paperHeight + padding.t + padding.b
     );
 
+    // add responsiveness to box
     paper.setViewBox(0, 0, paper.width, paper.height, true);
 
+    // draw background
     paper
         .rect(0, 0, paper.width, paper.height)
         .attr('fill', '#fff');
 
+    // draw value marker
+    var i = 0, y;
+    for (; i < heighestValue; i++) {
+        y = i * unitHeight;
+
+        paper
+            .rect(padding.l, y + padding.t, paper.width - padding.r - padding.l, 1)
+            .attr({
+                'fill': '#c2d6c2',
+                'stroke': 'none'
+            });
+
+        paper
+            .text(20, y + padding.t, heighestValue - i)
+            .attr('fill', '#527a52');
+    }
+
+    // draw each bar
     _.each(results, function (element, index, list) {
 
         var barHeight = unitHeight * element.value,
@@ -56,7 +78,7 @@ drawChart = function (results) {
                 'text-anchor': 'end',
                 'font-size': 14,
                 'font-family': 'Arial',
-                'fill': '#fff'
+                'fill': '#c2d6c2'
             });
     });
 
@@ -84,13 +106,19 @@ Template.chartItem.events({
             value: $answer.val().toLowerCase()
         };
 
-        Meteor.call('chartAddValue', answer, function (error, result) {
+        if (answer.value === '') {
 
-            if (error) {
-                alert(error.reason);
-            }
+            alert('Please enter a value');
+        } else {
 
-        });
+            Meteor.call('chartAddValue', answer, function (error, result) {
+
+                if (error) {
+                    alert(error.reason);
+                }
+
+            });
+        }
 
         $answer.val('');
 
