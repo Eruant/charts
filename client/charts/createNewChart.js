@@ -1,3 +1,9 @@
+Template.createNewChart.helpers({
+
+    title: 'Create a new chart'
+
+});
+
 Template.createNewChart.events({
 
     'submit form': function (e) {
