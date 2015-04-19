@@ -9,11 +9,28 @@
     h1 {
         flex: 1 100%;
         margin: auto;
+
+        a {
+            color: $color-text-main;
+            text-decoration: none;
+        }
     }
 
     #login-buttons {
         flex: 1 100%;
         margin: auto;
+        text-align: right;
+    }
+
+    #login-dropdown-list {
+        text-align: left;
+        left: auto;
+        right: -1px;
+
+        .login-button {
+            font-size: 100%;
+            background-color: $color-button;
+        }
     }
 
 }

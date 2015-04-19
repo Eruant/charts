@@ -1,18 +1,14 @@
 <template name="chartItem">
-<h2>{{ title }}</h2>
+    <section class="chartItem">
+        <h2>{{ title }}</h2>
 
-<div id="paper"></div>
+        <div id="paper"></div>
 
-<ul>
-{{#each results}}
-    <li>{{name}}:{{value}}</li>
-{{/each}}
-</ul>
+        <form>
+            <input type="text" name="answer" placeholder="Your answer">
+            <input class="btn" type="submit" value="Submit">
+        </form>
 
-<form>
-    <input name="answer" placeholder="Your answer">
-    <input type="submit" value="Submit">
-</form>
-
-<a href="{{ pathFor 'chartList' }}">Back</a>
+        <a class="btn" href="{{ pathFor 'chartList' }}">Back</a>
+    </section>
 </template>

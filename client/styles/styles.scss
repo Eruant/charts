@@ -5,6 +5,9 @@
 @import "__header/header";
 @import "__footer/footer";
 
+@import "__charts/chartList";
+@import "__charts/chartItem";
+
 #paper svg {
     max-width: 100%;
 }

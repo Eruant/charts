@@ -1,7 +1,8 @@
 html,
 body {
     background-color: $color-background;
-    font-family: Arial;
+    font-family: Helvetica, Arial;
+    color: $color-text-main;
 }
 
 .main {
@@ -12,6 +13,11 @@ body {
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
-    color: #fff;
-    background-color: hsl(180, 20%, 40%);
+    color: $color-white;
+    background-color: $color-button;
+
+    &:hover {
+        background-color: $color-background-light;
+        color: $color-text-main;
+    }
 }

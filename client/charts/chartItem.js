@@ -47,7 +47,7 @@ drawChart = function (results) {
 
         paper
             .rect(x, y, barWidth - (barPadding * 2), barHeight)
-            .attr('fill', '#336');
+            .attr('fill', '#527a52');
 
         paper
             .text(x + barPadding + 2, paperHeight + padding.t - barPadding, text)

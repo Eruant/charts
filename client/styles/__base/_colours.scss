@@ -1,2 +1,7 @@
-$color-background: hsl(180, 20%, 80%);
-$color-background-light: hsl(180, 20%, 95%);
+$color-base: 120; // 0 - 360
+
+$color-background: hsl($color-base, 20%, 80%);
+$color-background-light: hsl($color-base, 20%, 95%);
+$color-text-main: hsl($color-base, 20%, 30%);
+$color-button: hsl($color-base, 20%, 40%);
+$color-white: hsl($color-base, 100%, 100%);

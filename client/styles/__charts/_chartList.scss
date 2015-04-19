@@ -1,0 +1,38 @@
+.chartList {
+
+    ul {
+        margin: 0 0 30px;
+        padding: 0;
+        list-style: none;
+    }
+
+        li {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+
+            a {
+                margin: 4px 0;
+                padding: 10px;
+                display: inline-block;
+                color: $color-white;
+                background-color: $color-button;
+                text-decoration: none;
+                border-radius: 2px;
+
+                &:before {
+                    content: ":: ";
+                }
+
+                &:after {
+                    content: " ::";
+                }
+
+                &:hover {
+                    background-color: $color-background-light;
+                    color: $color-text-main;
+                }
+            }
+        }
+
+}
